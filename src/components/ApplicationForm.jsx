@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import './ApplicationForm.css';
 
 const ApplicationForm = ({ jobTitle }) => {
-  const api_base_url = "http://job-portal-backend-ihm5qd-30c170-3-17-158-82.traefik.me";
-
   const [formData, setFormData] = useState({
     candidateName: '',
     address: '',
@@ -207,7 +205,7 @@ const ApplicationForm = ({ jobTitle }) => {
     
     if (!validateForm()) return;
     
-    const rawEndpoint = `${api_base_url}/api/candidates/`;
+    const rawEndpoint = import.meta.env.VITE_CANDIDATES_ENDPOINT;
     // Ensure trailing slash for Django when APPEND_SLASH is True
     const endpoint = rawEndpoint && /\/$/.test(rawEndpoint) ? rawEndpoint : `${rawEndpoint || ''}/`;
     if (!rawEndpoint) {
