@@ -14,6 +14,9 @@ RUN npm install
 # Copy source code
 COPY . .
 
+ARG VITE_CANDIDATES_ENDPOINT
+ENV VITE_CANDIDATES_ENDPOINT=${VITE_CANDIDATES_ENDPOINT}
+
 # Build the application
 RUN npm run build
 
